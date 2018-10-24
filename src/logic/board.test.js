@@ -32,5 +32,7 @@ it('Board starts with X playing', () => {
 	expect(board.isX).toBe(true);
 });
 
-
+it('Starts with zero moves made', () => {
+	expect(board.getTotalMoves()).toBe(0);
+});
 
