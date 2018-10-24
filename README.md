@@ -1,1 +1,1 @@
-# TicTacToe
+# TicTacToe [![CircleCI](https://circleci.com/gh/RhesPosse/TicTacToe.svg?style=svg)](https://circleci.com/gh/RhesPosse/TicTacToe)
