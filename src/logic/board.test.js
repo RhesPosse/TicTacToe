@@ -28,4 +28,9 @@ it('Board starts with no winner', () => {
 	expect(board.isWinner).toBe(false);
 });
 
+it('Board starts with X playing', () => {
+	expect(board.isX).toBe(true);
+});
+
+
 
