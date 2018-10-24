@@ -22,8 +22,10 @@ describe('arrayContaining', () => {
     expect(board.getBoard()).toHaveLength(9);
   });	
 
-
 });
 
+it('Board starts with no winner', () => {
+	expect(board.isWinner).toBe(false);
+});
 
 
