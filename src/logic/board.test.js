@@ -53,6 +53,10 @@ it('Expect board not to contain "O', () => {
     expect.not.arrayContaining(expected));
 });
 
+it('Expect movesMade to be 1 after putting in X', () => {
+  expect(board.getTotalMoves()).toBe(1);
+})
+
 it('passing 2 into move', () => {
   expect(board.move(2)).toBe(false);
 });
@@ -64,4 +68,8 @@ it('Expect board[1] to be "O"', () => {
 
 it('Expect board to contain "O"', () => {
   expect(board.getBoard()).toContain("O");
+});
+
+it('Expect movesMade to be 2 after adding O', () => {
+  expect(board.getTotalMoves()).toBe(2);
 });
