@@ -9,10 +9,16 @@ let movesMade = 0;
 function move(move) {
 	if(isX) {
 		board[move-1] = "X";
-		//
 	}
 	else {
-		return true;
+		board[move-1] = "O";
+	}
+
+	if(isX) {
+		isX = false;
+	}
+	else {
+		isX = true;
 	}
 	return false;
 }
