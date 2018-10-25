@@ -34,3 +34,6 @@ it('Starts with zero moves made', () => {
 	expect(board.getTotalMoves()).toBe(0);
 });
 
+it('passing into move', () => {
+  expect(board.move(1)).toBe(false);
+});
