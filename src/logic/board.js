@@ -20,6 +20,7 @@ function move(move) {
 	else {
 		isX = true;
 	}
+	movesMade = movesMade + 1;
 	return false;
 }
 
