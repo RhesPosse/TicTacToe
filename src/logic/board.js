@@ -7,20 +7,32 @@ let isX = true;
 let movesMade = 0;
 
 function move(move) {
-	if(isX) {
-		board[move-1] = "X";
-	}
-	else {
-		board[move-1] = "O";
-	}
+	if(validateMove(move)) {
+		if(isX) {
+			board[move-1] = "X";
+		}
+		else {
+			board[move-1] = "O";
+		}
 
-	if(isX) {
-		isX = false;
+		if(isX) {
+			isX = false;
+		}
+		else {
+			isX = true;
+		}
+		movesMade = movesMade + 1;
+		return false;
 	}
 	else {
-		isX = true;
+		return true;
 	}
-	movesMade = movesMade + 1;
+}
+
+function validateMove(move) {
+	if(board[move-1] == "") {
+		return true;
+	}
 	return false;
 }
 

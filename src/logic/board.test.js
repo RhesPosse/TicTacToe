@@ -73,3 +73,25 @@ it('Expect board to contain "O"', () => {
 it('Expect movesMade to be 2 after adding O', () => {
   expect(board.getTotalMoves()).toBe(2);
 });
+
+it('trying to pass 2 into move again', () => {
+  expect(board.move(2)).toBe(true);
+});
+
+it('next player chooses 3', () => {
+  expect(board.move(3)).toBe(false);
+});
+
+it('Expect board[2] to be "X"', () => {
+  const expected = board.getBoard();
+  expect(expected[2]).toBe("X");
+});
+
+it('Expect board[3] to be ""', () => {
+  const expected = board.getBoard();
+  expect(expected[3]).toBe("");
+});
+
+it('Expect movesMade to be 3', () => {
+  expect(board.getTotalMoves()).toBe(3);
+});
