@@ -120,3 +120,8 @@ it('Expected player to be "X"', () => {
 it('Expected movesMade to be 4', () => {
   expect(board.getTotalMoves()).toBe(4);
 });
+
+it('Only winning rows return winner', () => {
+  const expected = board.checkWin();
+  expect(expected).toBe(true);
+  }); 
