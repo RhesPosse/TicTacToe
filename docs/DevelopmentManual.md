@@ -15,7 +15,7 @@
     ```sh
     $ npm --version
     ```
-    The version number should be above 6
+    Should be version "6.4.1" or higher
 3. Clone the repo to your computer
     ```sh
     $ git clone git@github.com:RhesPosse/TicTacToe.git
