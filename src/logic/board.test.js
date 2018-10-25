@@ -37,3 +37,31 @@ it('Starts with zero moves made', () => {
 it('passing into move', () => {
   expect(board.move(1)).toBe(false);
 });
+
+it('Expect board[0] to be "X"', () => {
+  const expected = board.getBoard();
+  expect(expected[0]).toBe("X");
+});
+
+it('Expect board to contain "X"', () => {
+  expect(board.getBoard()).toContain("X");
+})
+
+it('Expect board not to contain "O', () => {
+  const expected = ["O"];
+  expect(board.getBoard()).toEqual(
+    expect.not.arrayContaining(expected));
+});
+
+it('passing 2 into move', () => {
+  expect(board.move(2)).toBe(false);
+});
+
+it('Expect board[1] to be "O"', () => {
+  const expected = board.getBoard();
+  expect(expected[1]).toBe("O");
+});
+
+it('Expect board to contain "O"', () => {
+  expect(board.getBoard()).toContain("O");
+});
