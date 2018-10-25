@@ -95,3 +95,28 @@ it('Expect board[3] to be ""', () => {
 it('Expect movesMade to be 3', () => {
   expect(board.getTotalMoves()).toBe(3);
 });
+
+it('Move cannot be 0', () => {
+  expect(board.move(0)).toBe(true);
+});
+
+it('Move cannot be 10', () => {
+  expect(board.move(10)).toBe(true);
+});
+
+it('Move can be 9', () => {
+  expect(board.move(9)).toBe(false);
+});
+
+it('Expect board[8] to be "O"', () => {
+  const expected = board.getBoard();
+  expect(expected[8]).toBe("O");
+});
+
+it('Expected player to be "X"', () => {
+  expect(board.isX).toBe(true);
+});
+
+it('Expected movesMade to be 4', () => {
+  expect(board.getTotalMoves()).toBe(4);
+});
