@@ -199,4 +199,39 @@ it('itsADraw should return a draw if nine moves are made', () => {
     board.move(9);
 
   expect(board.itsADraw()).toBe(true);
-})
+});
+
+describe('Checking printBoard', () => {
+  let printBoard = board.printBoard();
+ it('Expect Board To Be Empty and not contain X', () => {
+    const notExpected = ["X"];
+    expect(printBoard).not.toContain(notExpected);
+  });
+
+  it('Expect Board to be Empty and not contain O', () => {
+    const notExpected = ["O"];
+    expect(printBoard).not.toContain(notExpected);
+  });
+
+  it('Expect Board to be empty and contain |', () => {
+    const expected = ["|"];
+    expect(printBoard).toContain(expected);
+  });
+
+  it('Expect board to contain X after 1 move', () => {
+    const expected = ["X"];
+    board.move(1);
+    printBoard = board.printBoard();
+    expect(printBoard).toContain(expected);
+  });
+
+  it('Expect board to contain X and O after 2nd move', () => {
+    const expectedX = ["X"];
+    const expectedO = ["O"];
+    board.move(2);
+    printBoard = board.printBoard();
+    expect(printBoard).toContain(expectedX);
+    expect(printBoard).toContain(expectedO);
+  });
+
+});
