@@ -60,6 +60,9 @@ function getTotalMoves(){
 
 	return movesMade;
 }
+function getWinner(){
+	return isWinner;
+}
 
  function checkWin() {
 
@@ -72,14 +75,15 @@ function getTotalMoves(){
 		(board[0] !== "" && (board[0] === board[3] && board[3]=== board[6])) ||//columns
 		(board[1] !== "" && (board[1] === board[4] && board[4]=== board[7])) ||
 		(board[2] !== "" && (board[2] === board[5] && board[5]=== board[8])) 
-	){
+	){	
+		isWinner = true;
 		return true;
 	}
 	return false;
 	
 };
 
-module.exports = {getPlayers, getBoard, isWinner, isX, getTotalMoves, move, checkWin, initializeGame}; 
+module.exports = {getPlayers, getBoard, isWinner, isX, getTotalMoves, move, checkWin, initializeGame, getWinner}; 
 
 
 
