@@ -64,6 +64,13 @@ function getWinner(){
 	return isWinner;
 }
 
+function itsADraw(){
+	if(movesMade === 9 && !checkWin()){
+		return true;
+	}
+	return false;
+}
+
  function checkWin() {
 
 	if(
@@ -83,7 +90,7 @@ function getWinner(){
 	
 };
 
-module.exports = {getPlayers, getBoard, isWinner, isX, getTotalMoves, move, checkWin, initializeGame, getWinner}; 
+module.exports = {getPlayers, getBoard, isWinner, isX, getTotalMoves, move, checkWin, initializeGame, getWinner, itsADraw}; 
 
 
 
