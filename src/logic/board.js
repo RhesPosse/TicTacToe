@@ -1,39 +1,31 @@
 //board.js
 
-const players = ["X", "O"];
 let board = ["", "", "", "", "", "", "", "", ""];
 let isWinner = false;
 let isX = true;
 let movesMade = 0;
 
 
-function initializeGame(){
+function initializeGame() {
 	board = ["", "", "", "", "", "", "", "", ""];
 	isWinner = false;
 	isX = true;
 	movesMade = 0;
-}
+};
 
 
 function move(move) {
 	if(validateMove(move)) {
 		if(isX) {
 			board[move-1] = "X";
-		}
-		else {
-			board[move-1] = "O";
-		}
-
-		if(isX) {
 			isX = false;
 		}
 		else {
+			board[move-1] = "O";
 			isX = true;
 		}
 		movesMade = movesMade + 1;
-		return false;
 	}
-	return true;
 }
 
 function validateMove(move) {
@@ -41,12 +33,6 @@ function validateMove(move) {
 		return true;
 	}
 	return false;
-}
-
-function getPlayers(){
-	
-	return players;
-
 }
 
 function getBoard(){
@@ -60,6 +46,10 @@ function getTotalMoves(){
 }
 function getWinner(){
 	return isWinner;
+}
+
+function getIsX() {
+	return isX;
 }
 
 function itsADraw(){
@@ -80,7 +70,7 @@ function itsADraw(){
 		(board[0] !== "" && (board[0] === board[3] && board[3]=== board[6])) ||//columns
 		(board[1] !== "" && (board[1] === board[4] && board[4]=== board[7])) ||
 		(board[2] !== "" && (board[2] === board[5] && board[5]=== board[8])) 
-	){	
+	) {	
 		isWinner = true;
 		return true;
 	}
@@ -97,15 +87,15 @@ function printBoard() {
 				boardToPrint += "   |";
 			}
 			else {
-				boardToPrint += " " + board[i] + " | ";
+				boardToPrint += " " + board[i] + " |";
 			}
 		}
 		else if(i == 1 || i == 4 || i == 7) {
 			if(board[i] == "") {
-				boardToPrint += "  | ";
+				boardToPrint += "   | ";
 			}
 			else {
-				boardToPrint += board[i] + " | ";
+				boardToPrint += " " + board[i] + " | ";
 			}
 		}
 		else {
@@ -125,7 +115,7 @@ function printBoard() {
 	return boardToPrint;
 };
 
-module.exports = {printBoard, getPlayers, getBoard, isWinner, isX, getTotalMoves, move, checkWin, initializeGame, getWinner, itsADraw}; 
+module.exports = {getIsX, printBoard, getBoard, isWinner, isX, getTotalMoves, move, checkWin, initializeGame, getWinner, itsADraw}; 
 
 
 
