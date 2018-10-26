@@ -187,3 +187,16 @@ it('checkWin should return isWinner as true', () => {
 });
 
 });
+it('itsADraw should return a draw if nine moves are made', () => {
+    board.move(1);
+    board.move(5);
+    board.move(2);
+    board.move(3);
+    board.move(6);
+    board.move(4);
+    board.move(7);
+    board.move(8);
+    board.move(9);
+
+  expect(board.itsADraw()).toBe(true);
+})
