@@ -174,4 +174,16 @@ it('checkWin should return true if any column is full', () => {
     expect(board.checkWin()).toBe(true);
 });
 
+it('checkWin should return isWinner as true', () => {
+    
+    board.move(1);
+    board.move(2);
+    board.move(4);
+    board.move(8);
+    board.move(7);
+    board.checkWin();
+    
+    expect(board.getWinner()).toBe(true);
+});
+
 });
