@@ -125,3 +125,12 @@ it('Only winning rows return winner', () => {
   const expected = board.checkWin();
   expect(expected).toBe(true);
   }); 
+
+it('checkWin should return true if any row is full', () => {
+    
+    board.move(0);
+    board.move(1);
+    board.move(2);
+    
+    expect(board.checkWin()).toBe(true);
+});
