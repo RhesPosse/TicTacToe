@@ -123,14 +123,25 @@ it('Expected movesMade to be 4', () => {
 
 it('Only winning rows return winner', () => {
   const expected = board.checkWin();
-  expect(expected).toBe(true);
+  expect(expected).toBe(false);
   }); 
 
 it('checkWin should return true if any row is full', () => {
-    
-    board.move(0);
+    board.initializeGame();
     board.move(1);
+    board.move(4);
     board.move(2);
+    board.move(8);
+    board.move(3);
     
     expect(board.checkWin()).toBe(true);
+});
+
+it('checkWin should not return true if there is not a winner', () => {
+    board.initializeGame();
+    board.move(1);
+    board.move(3);
+    board.move(8);
+    
+    expect(board.checkWin()).toBe(false);
 });
