@@ -152,4 +152,16 @@ it('checkWin should not return true if there is not a winner', () => {
     expect(board.checkWin()).toBe(false);
 });
 
+it('checkWin should return true if diagonal is full', () => {
+    
+    board.move(1);
+    board.move(4);
+    board.move(5);
+    board.move(8);
+    board.move(9);
+    
+    expect(board.checkWin()).toBe(true);
+});
+
+
 });
