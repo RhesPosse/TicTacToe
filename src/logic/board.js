@@ -33,9 +33,7 @@ function move(move) {
 		movesMade = movesMade + 1;
 		return false;
 	}
-	else {
-		return true;
-	}
+	return true;
 }
 
 function validateMove(move) {
@@ -89,14 +87,45 @@ function itsADraw(){
 	return false;
 	
 };
+// print board
+function printBoard() {
+	boardToPrint = "";
 
-module.exports = {getPlayers, getBoard, isWinner, isX, getTotalMoves, move, checkWin, initializeGame, getWinner, itsADraw}; 
+	for(i = 0; i < 9; i++) {
+		if(i == 0 || i == 3 || i == 6) {
+			if(board[i] == "") {
+				boardToPrint += "   |";
+			}
+			else {
+				boardToPrint += " " + board[i] + " | ";
+			}
+		}
+		else if(i == 1 || i == 4 || i == 7) {
+			if(board[i] == "") {
+				boardToPrint += "  | ";
+			}
+			else {
+				boardToPrint += board[i] + " | ";
+			}
+		}
+		else {
+			if(board[i] == "") {
+				boardToPrint += "  ";
+			}
+			else {
+				boardToPrint += board[i];
+			}
 
+			if(i != 8) {
+				boardToPrint += "\n--- --- ---\n";
 
+			}
+		}
+	}
+	return boardToPrint;
+};
 
-
-
-
+module.exports = {printBoard, getPlayers, getBoard, isWinner, isX, getTotalMoves, move, checkWin, initializeGame, getWinner, itsADraw}; 
 
 
 
