@@ -163,5 +163,15 @@ it('checkWin should return true if diagonal is full', () => {
     expect(board.checkWin()).toBe(true);
 });
 
+it('checkWin should return true if any column is full', () => {
+    
+    board.move(1);
+    board.move(2);
+    board.move(4);
+    board.move(8);
+    board.move(7);
+    
+    expect(board.checkWin()).toBe(true);
+});
 
 });
