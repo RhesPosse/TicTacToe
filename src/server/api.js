@@ -24,4 +24,8 @@ router.get("/getIsX", (request, response) => {
 	response.status(200).send({isX: board.getIsX()});
 });
 
+router.get("/itsADraw", (request, response) => {
+	response.status(200).send({draw: board.itsADraw()});
+});
+
 module.exports = router;
