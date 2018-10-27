@@ -78,3 +78,18 @@ describe("GET printBoard", () => {
 		expect(response.body).toHaveProperty("boardPrinted");
 	});
 });
+
+describe("GET gameState", () => {
+	it("should return a 200 OK status code", async () => {
+		const response = await request(app).get("/api/gameState");
+		expect(response.status).toBe(200);  
+	});
+	it("should return multiple properties in a object", async () => {
+		const response = await request(app).get("/api/gameState");
+		expect(response.body).toHaveProperty("board");
+		expect(response.body).toHaveProperty("boardPrinted");
+		expect(response.body).toHaveProperty("totalMoves");
+		expect(response.body).toHaveProperty("currentPlayer");
+		expect(response.body).toHaveProperty("state");
+	});
+});
