@@ -29,7 +29,7 @@ function move(move) {
 }
 
 function validateMove(move) {
-	if(board[move-1] == "") {
+	if(board[move-1] === "") {
 		return true;
 	}
 	return false;
