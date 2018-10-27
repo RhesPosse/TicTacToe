@@ -297,3 +297,24 @@ describe('Checking printBoard', () => {
   });
 
 });
+
+describe('Testing setBoard function', () => {
+  it('Expect setBoard to return false if an array is not passed in', () => {
+    expect(board.setBoard(1)).toBe(false);
+  });
+
+  it('Expect setBoard to return false if an array is not contain 9 items', () => {
+    expect(board.setBoard(["","",""])).toBe(false);
+    expect(board.setBoard(["","","","","","","","","",""])).toBe(false);
+  });
+
+  it('Expect setBoard to return false if an array contains invalid characters', () => {
+    expect(board.setBoard(["","","2","","!","","&&","s","ss"])).toBe(false);
+  });
+
+  it('Expect setBoard to return true if the array is valid and update board', () => {
+    const newBoard = ["", "X", "", "X", "", "", "O", "O", ""];
+    expect(board.setBoard(newBoard)).toBe(true);
+    expect(board.getBoard()).toBe(newBoard);
+  });
+});
