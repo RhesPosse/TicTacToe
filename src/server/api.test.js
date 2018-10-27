@@ -67,3 +67,14 @@ describe("GET itsADraw", () => {
 		expect(response.body).toHaveProperty("draw");
 	});
 });
+
+describe("GET printBoard", () => {
+	it("should return a 200 OK status code", async () => {
+		const response = await request(app).get("/api/printBoard");
+		expect(response.status).toBe(200);  
+	});
+	it("should return boardPrinted in a object", async () => {
+		const response = await request(app).get("/api/printBoard");
+		expect(response.body).toHaveProperty("boardPrinted");
+	});
+});

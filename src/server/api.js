@@ -28,4 +28,8 @@ router.get("/itsADraw", (request, response) => {
 	response.status(200).send({draw: board.itsADraw()});
 });
 
+router.get("/printBoard", (request, response) => {
+	response.status(200).send({boardPrinted: board.printBoard()});
+});
+
 module.exports = router;
