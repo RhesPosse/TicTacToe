@@ -23,3 +23,14 @@ describe("GET getBoard", () => {
 		expect(response.body).toHaveProperty("board");
 	});
 });
+
+describe("GET getTotalMoves", () => {
+	it("should return a 200 OK status code", async () => {
+		const response = await request(app).get("/api/getTotalMoves");
+		expect(response.status).toBe(200);  
+	});
+	it("should return totalMoves in a object", async () => {
+		const response = await request(app).get("/api/getTotalMoves");
+		expect(response.body).toHaveProperty("totalMoves");
+	});
+});

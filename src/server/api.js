@@ -12,4 +12,8 @@ router.get("/getBoard", (request, response) => {
 	response.status(200).send({board: board.getBoard()});
 });
 
+router.get("/getTotalMoves", (request, response) => {
+	response.status(200).send({totalMoves: board.getTotalMoves()});
+});
+
 module.exports = router;
