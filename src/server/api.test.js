@@ -56,3 +56,14 @@ describe("GET getIsX", () => {
 		expect(response.body).toHaveProperty("isX");
 	});
 });
+
+describe("GET itsADraw", () => {
+	it("should return a 200 OK status code", async () => {
+		const response = await request(app).get("/api/itsADraw");
+		expect(response.status).toBe(200);  
+	});
+	it("should return draw in a object", async () => {
+		const response = await request(app).get("/api/itsADraw");
+		expect(response.body).toHaveProperty("draw");
+	});
+});
