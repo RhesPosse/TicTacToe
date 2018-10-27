@@ -12,3 +12,14 @@ describe("GET initializeGame", () => {
 		expect(response.body).toHaveProperty("message");
 	});
 });
+
+describe("GET getBoard", () => {
+	it("should return a 200 OK status code", async () => {
+		const response = await request(app).get("/api/getBoard");
+		expect(response.status).toBe(200);  
+	});
+	it("should return board in a object", async () => {
+		const response = await request(app).get("/api/getBoard");
+		expect(response.body).toHaveProperty("board");
+	});
+});

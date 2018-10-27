@@ -8,4 +8,8 @@ router.get("/initializeGame", (request, response) => {
 	response.status(200).send({message: "New Game Started"});
 });
 
+router.get("/getBoard", (request, response) => {
+	response.status(200).send({board: board.getBoard()});
+});
+
 module.exports = router;
