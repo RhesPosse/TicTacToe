@@ -24,8 +24,10 @@ function move(move) {
 			board[move-1] = "O";
 			isX = true;
 		}
-		movesMade = movesMade + 1;
+		movesMade += 1;
+		return true;
 	}
+	return false;
 }
 
 function validateMove(move) {

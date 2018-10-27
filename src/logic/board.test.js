@@ -162,6 +162,22 @@ describe('Testing move function', () => {
     expect(board.getTotalMoves()).toBe(4);
   });
 
+  it('Expected move to be return true on valid move', () => {
+    expect(board.move(1)).toBe(true);
+    expect(board.move(2)).toBe(true);
+    expect(board.move(3)).toBe(true);
+    expect(board.move(4)).toBe(true);
+    expect(board.move(5)).toBe(true);
+  });
+
+  it('Expected move to be return false on invalid move', () => {
+    expect(board.move(1)).toBe(true);
+    expect(board.move(2)).toBe(true);
+    expect(board.move(2)).toBe(false);
+    expect(board.move(4)).toBe(true);
+    expect(board.move(1)).toBe(false);
+  });
+
 });
 
 describe('checkWin', () => {
