@@ -32,4 +32,41 @@ router.get("/printBoard", (request, response) => {
 	response.status(200).send({boardPrinted: board.printBoard()});
 });
 
+router.get("/gameState", (request, response) => {
+	let state, currentPlayer = "O";
+
+	if (board.getIsX()) {
+		currentPlayer = "X";
+	}
+
+	if (board.getWinner()) {
+		if (currentPlayer === "X") {
+			currentPlayer = "O";
+		} else {
+			currentPlayer = "X";
+		}
+		state = currentPlayer + " Won";
+	} else if (board.itsADraw()) {
+		if (currentPlayer === "X") {
+			currentPlayer = "O";
+		} else {
+			currentPlayer = "X";
+		}
+		state = "Draw";
+	} else {
+		state = "Unfinished";
+	}
+
+	const gameState = {
+		board: board.getBoard(),
+		boardPrinted: board.printBoard(),
+		totalMoves: board.getTotalMoves(),
+		currentPlayer: currentPlayer,
+		state: state
+	};
+
+	response.status(200).send(gameState);
+});
+
+
 module.exports = router;
