@@ -34,3 +34,14 @@ describe("GET getTotalMoves", () => {
 		expect(response.body).toHaveProperty("totalMoves");
 	});
 });
+
+describe("GET getWinner", () => {
+	it("should return a 200 OK status code", async () => {
+		const response = await request(app).get("/api/getWinner");
+		expect(response.status).toBe(200);  
+	});
+	it("should return totalMoves in a object", async () => {
+		const response = await request(app).get("/api/getWinner");
+		expect(response.body).toHaveProperty("winner");
+	});
+});
