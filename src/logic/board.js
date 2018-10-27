@@ -79,19 +79,19 @@ function itsADraw(){
 };
 // print board
 function printBoard() {
-	boardToPrint = "";
+	let boardToPrint = "";
 
-	for(i = 0; i < 9; i++) {
-		if(i == 0 || i == 3 || i == 6) {
-			if(board[i] == "") {
+	for(let i = 0; i < 9; i++) {
+		if(i === 0 || i === 3 || i === 6) {
+			if(board[i] === "") {
 				boardToPrint += "   |";
 			}
 			else {
 				boardToPrint += " " + board[i] + " |";
 			}
 		}
-		else if(i == 1 || i == 4 || i == 7) {
-			if(board[i] == "") {
+		else if(i === 1 || i === 4 || i === 7) {
+			if(board[i] === "") {
 				boardToPrint += "   | ";
 			}
 			else {
@@ -99,16 +99,15 @@ function printBoard() {
 			}
 		}
 		else {
-			if(board[i] == "") {
+			if(board[i] === "") {
 				boardToPrint += "  ";
 			}
 			else {
 				boardToPrint += board[i];
 			}
 
-			if(i != 8) {
+			if(i !== 8) {
 				boardToPrint += "\n--- --- ---\n";
-
 			}
 		}
 	}
