@@ -40,7 +40,7 @@ describe("GET getWinner", () => {
 		const response = await request(app).get("/api/getWinner");
 		expect(response.status).toBe(200);  
 	});
-	it("should return totalMoves in a object", async () => {
+	it("should return winner in a object", async () => {
 		const response = await request(app).get("/api/getWinner");
 		expect(response.body).toHaveProperty("winner");
 	});
@@ -51,7 +51,7 @@ describe("GET getIsX", () => {
 		const response = await request(app).get("/api/getIsX");
 		expect(response.status).toBe(200);  
 	});
-	it("should return getIsX in a object", async () => {
+	it("should return isX in a object", async () => {
 		const response = await request(app).get("/api/getIsX");
 		expect(response.body).toHaveProperty("isX");
 	});
