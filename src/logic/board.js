@@ -116,7 +116,22 @@ function printBoard() {
 	return boardToPrint;
 };
 
-module.exports = {getIsX, printBoard, getBoard, getTotalMoves, move, checkWin, initializeGame, getWinner, itsADraw}; 
+function setBoard(newBoard) {
+	if (newBoard.constructor === Array) {
+		if (newBoard.length === 9) {
+			for(let i = 0; i < 9; ++i) {
+				if (newBoard[i] !== "" && newBoard[i] !== "X" && newBoard[i] !== "O") {
+					return false;
+				}
+			}
+			board = newBoard;
+			return true;
+		}
+	}
+	return false;
+}
+
+module.exports = {getIsX, printBoard, getBoard, getTotalMoves, move, checkWin, initializeGame, getWinner, itsADraw, setBoard}; 
 
 
 
