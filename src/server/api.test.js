@@ -2,13 +2,13 @@
 const request = require("supertest");
 const app = require("../app");
 
-describe("GET test", () => {
+describe("GET initializeGame", () => {
 	it("should return a 200 OK status code", async () => {
-		const response = await request(app).get("/api/test");
+		const response = await request(app).get("/api/initializeGame");
 		expect(response.status).toBe(200);  
 	});
-	it("should return Hello World in a object", async () => {
-		const response = await request(app).get("/api/test");
-		expect(response.body.test).toBe("Hello World");
+	it("should return message in a object", async () => {
+		const response = await request(app).get("/api/initializeGame");
+		expect(response.body).toHaveProperty("message");
 	});
 });
