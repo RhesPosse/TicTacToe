@@ -15,7 +15,7 @@ describe('arrayContaining', () => {
 });
 
 it('Board starts with no winner', () => {
-	expect(board.isWinner).toBe(false);
+	expect(board.getWinner()).toBe(false);
 });
 
 it('Board starts with X playing', () => {
@@ -99,7 +99,7 @@ describe('Testing move function', () => {
     board.move(1);
     board.move(2);
     board.move(2);
-    expect(board.isX).toBe(true);
+    expect(board.getIsX()).toBe(true);
   });
 
   it('movesMade should stay as 2', () => {

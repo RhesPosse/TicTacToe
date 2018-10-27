@@ -115,7 +115,7 @@ function printBoard() {
 	return boardToPrint;
 };
 
-module.exports = {getIsX, printBoard, getBoard, isWinner, isX, getTotalMoves, move, checkWin, initializeGame, getWinner, itsADraw}; 
+module.exports = {getIsX, printBoard, getBoard, getTotalMoves, move, checkWin, initializeGame, getWinner, itsADraw}; 
 
 
 
