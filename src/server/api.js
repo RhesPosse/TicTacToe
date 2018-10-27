@@ -1,10 +1,9 @@
 //api.js
 const express = require("express");
-const api = express();
+const router = express.Router();
 
-api.get("/test", (request, response) => {
+router.get("/test", (request, response) => {
 	response.status(200).send({test: "Hello World"});
-	return response;
 });
 
-module.exports = api;
+module.exports = router;
