@@ -31,7 +31,7 @@ function move(move) {
 }
 
 function validateMove(move) {
-	if(board[move-1] === "") {
+	if(board[move-1] === "" && !isWinner) {
 		return true;
 	}
 	return false;
@@ -131,7 +131,7 @@ function setBoard(newBoard) {
 	return false;
 }
 
-module.exports = {getIsX, printBoard, getBoard, getTotalMoves, move, checkWin, initializeGame, getWinner, itsADraw, setBoard}; 
+module.exports = {getIsX, printBoard, getBoard, getTotalMoves, move, checkWin, initializeGame, getWinner, itsADraw, setBoard, validateMove}; 
 
 
 
