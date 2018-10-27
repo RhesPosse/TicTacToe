@@ -318,3 +318,30 @@ describe('Testing setBoard function', () => {
     expect(board.getBoard()).toBe(newBoard);
   });
 });
+
+describe('Testing validateMove function', () => {
+  it('Expect validateMove to return true if a move is valid', () => {
+    board.setBoard(["", "X", "", "X", "", "", "O", "O", ""]);
+    expect(board.validateMove(1)).toBe(true);
+    expect(board.validateMove(3)).toBe(true);
+    expect(board.validateMove(5)).toBe(true);
+    expect(board.validateMove(6)).toBe(true);
+    expect(board.validateMove(9)).toBe(true);
+  });
+
+  it('Expect validateMove to return false if a move the spot is occupied', () => {
+    board.setBoard(["", "X", "", "X", "", "", "O", "O", ""]);
+    expect(board.validateMove(2)).toBe(false);
+    expect(board.validateMove(4)).toBe(false);
+    expect(board.validateMove(7)).toBe(false);
+    expect(board.validateMove(8)).toBe(false);
+  });
+
+  it('Expect validateMove to return false if the game has been won', () => {
+    board.setBoard(["X", "X", "X", "", "", "", "O", "O", ""]);
+    board.checkWin();
+    expect(board.validateMove(4)).toBe(false);
+    expect(board.validateMove(5)).toBe(false);
+    expect(board.validateMove(6)).toBe(false);
+  });
+});
