@@ -45,3 +45,14 @@ describe("GET getWinner", () => {
 		expect(response.body).toHaveProperty("winner");
 	});
 });
+
+describe("GET getIsX", () => {
+	it("should return a 200 OK status code", async () => {
+		const response = await request(app).get("/api/getIsX");
+		expect(response.status).toBe(200);  
+	});
+	it("should return getIsX in a object", async () => {
+		const response = await request(app).get("/api/getIsX");
+		expect(response.body).toHaveProperty("isX");
+	});
+});

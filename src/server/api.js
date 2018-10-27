@@ -20,4 +20,8 @@ router.get("/getWinner", (request, response) => {
 	response.status(200).send({winner: board.getWinner()});
 });
 
+router.get("/getIsX", (request, response) => {
+	response.status(200).send({isX: board.getIsX()});
+});
+
 module.exports = router;
