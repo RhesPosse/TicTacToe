@@ -16,4 +16,8 @@ router.get("/getTotalMoves", (request, response) => {
 	response.status(200).send({totalMoves: board.getTotalMoves()});
 });
 
+router.get("/getWinner", (request, response) => {
+	response.status(200).send({winner: board.getWinner()});
+});
+
 module.exports = router;
