@@ -41,3 +41,7 @@ jobs:
           command: "node ./docs/pdfConvert.js"
       - store_artifacts:
           path: docs/PDF/
+
+      - run:
+          name: Running code coverage
+          command: "npm run coverage"
