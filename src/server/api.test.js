@@ -84,9 +84,10 @@ describe("GET move", () => {
 		const response = await request(app).get("/api/move/1");
 		expect(response.status).toBe(200);  
 	});
-	it("should return message in a object", async () => {
+	it("should return multiple properties in a object", async () => {
 		const response = await request(app).get("/api/move/1");
 		expect(response.body).toHaveProperty("message");
+		expect(response.body).toHaveProperty("updatedSquare");
 	});
 });
 
