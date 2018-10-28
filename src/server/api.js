@@ -33,18 +33,21 @@ router.get("/printBoard", (request, response) => {
 });
 
 router.get("/move/:square", (request, response) => {
-	let player = board.getIsX;
+	let player = board.getIsX();
 	let message;
+	let updatedSquare = "";
 	if (board.move(request.params.square)) {
 		if (player) {
 			message = "X marked square " + request.params.square;
+			updatedSquare = "X";
 		} else {
 			message = "O marked square " + request.params.square;
+			updatedSquare = "O";
 		}
 	} else {
 		message = "Invalid Move";
 	}
-	response.status(200).send({message: message});
+	response.status(200).send({message: message, updatedSquare: updatedSquare});
 });
 
 router.get("/gameState", (request, response) => {
