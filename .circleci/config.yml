@@ -36,4 +36,8 @@ jobs:
       # run tests!
       - run: yarn test
 
-
+      - run:
+          name: Creating pdfs
+          command: "node ./docs/pdfConvert.js"
+      - store_artifacts:
+          path: docs/PDF/
