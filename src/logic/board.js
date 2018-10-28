@@ -39,14 +39,13 @@ function validateMove(move) {
 }
 
 function getBoard(){
-
 	return board;
 }
 
 function getTotalMoves(){
-
 	return movesMade;
 }
+
 function getWinner(){
 	return isWinner;
 }
@@ -63,7 +62,6 @@ function itsADraw(){
 }
 
  function checkWin() {
-
 	if(
 		(board[0] !== "" && (board[0] === board[1] && board[1] === board[2])) || //rows
 		(board[3] !== "" && (board[3] === board[4] && board[4] === board[5])) ||
@@ -130,7 +128,19 @@ function setBoard(newBoard) {
 	return false;
 }
 
-module.exports = {getIsX, printBoard, getBoard, getTotalMoves, move, checkWin, initializeGame, getWinner, itsADraw, setBoard, validateMove}; 
+module.exports = {
+	getIsX,
+	printBoard,
+	getBoard,
+	getTotalMoves,
+	move,
+	checkWin,
+	initializeGame,
+	getWinner,
+	itsADraw,
+	setBoard,
+	validateMove
+}; 
 
 
 
