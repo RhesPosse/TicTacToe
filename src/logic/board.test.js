@@ -181,76 +181,63 @@ describe('Testing move function', () => {
 });
 
 describe('checkWin', () => {
- it('Only winning rows return winner', () => {
-  const expected = board.checkWin();
-  expect(expected).toBe(false);
+  it('Only winning rows return winner', () => {
+    board.checkWin();
+    expect(board.getWinner()).toBe(false);
   }); 
 
-it('checkWin should return true if any row is full', () => {
+  it('checkWin should set isWinner to true if any row is full', () => {
     
     board.move(1);
     board.move(4);
     board.move(2);
     board.move(8);
     board.move(3);
-    
-    expect(board.checkWin()).toBe(true);
-});
-
-it('checkWin should not return true if there is not a winner', () => {
-    
-    board.move(1);
-    board.move(3);
-    board.move(8);
-    
-    expect(board.checkWin()).toBe(false);
-});
-
-it('checkWin should return true if diagonal is full', () => {
-    
-    board.move(1);
-    board.move(4);
-    board.move(5);
-    board.move(8);
-    board.move(9);
-    
-    expect(board.checkWin()).toBe(true);
-});
-
-it('checkWin should return true if any column is full', () => {
-    
-    board.move(1);
-    board.move(2);
-    board.move(4);
-    board.move(8);
-    board.move(7);
-    
-    expect(board.checkWin()).toBe(true);
-});
-
-it('checkWin should return isWinner as true', () => {
-    
-    board.move(1);
-    board.move(2);
-    board.move(4);
-    board.move(8);
-    board.move(7);
-    board.checkWin();
-    
+    board.checkWin()
     expect(board.getWinner()).toBe(true);
-});
+  });
 
-});
-it('itsADraw should return a draw if nine moves are made', () => {
+  it('checkWin should not set isWinner to true if there is not a winner', () => {
+    
     board.move(1);
-    board.move(5);
-    board.move(2);
     board.move(3);
-    board.move(6);
+    board.move(8);
+    board.checkWin()
+    expect(board.getWinner()).toBe(false);
+  });
+
+  it('checkWin should set isWinner to true if diagonal is full', () => {
+    
+    board.move(1);
     board.move(4);
-    board.move(7);
+    board.move(5);
     board.move(8);
     board.move(9);
+    board.checkWin()
+    expect(board.getWinner()).toBe(true);
+  });
+
+  it('checkWin should set isWinner to true if any column is full', () => {
+    board.move(1);
+    board.move(2);
+    board.move(4);
+    board.move(8);
+    board.move(7);
+    board.checkWin()
+    expect(board.getWinner()).toBe(true);
+  });
+});
+
+it('itsADraw should return a draw if nine moves are made', () => {
+  board.move(1);
+  board.move(5);
+  board.move(2);
+  board.move(3);
+  board.move(6);
+  board.move(4);
+  board.move(7);
+  board.move(8);
+  board.move(9);
 
   expect(board.itsADraw()).toBe(true);
 });
