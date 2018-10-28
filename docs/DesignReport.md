@@ -1,4 +1,4 @@
-# Desing Report
+# Design Report
 
 # Group members
 Rhesus Positive:

@@ -1,5 +1,12 @@
-function seeiftestswork() {
-	return true;
-}
+import _ from 'lodash';
 
-module.exports = seeiftestswork;
+function component() {
+	let element = document.createElement('div');
+
+	element.innerHTML = _.join(['Hello', 'there!'], ' ');
+
+	return element;
+
+};
+
+document.body.appendChild(component());
