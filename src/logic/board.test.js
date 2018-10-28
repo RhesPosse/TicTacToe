@@ -2,8 +2,8 @@
 const board = require("./board");
 
 afterEach(() => {
-    board.initializeGame();
-  });
+  board.initializeGame();
+});
 
 
 describe('arrayContaining', () => {
