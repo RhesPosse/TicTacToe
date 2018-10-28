@@ -25,6 +25,7 @@ function move(move) {
 			isX = true;
 		}
 		movesMade += 1;
+		checkWin();
 		return true;
 	}
 	return false;
