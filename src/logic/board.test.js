@@ -2,8 +2,8 @@
 const board = require("./board");
 
 afterEach(() => {
-    board.initializeGame();
-  });
+  board.initializeGame();
+});
 
 
 describe('arrayContaining', () => {
@@ -15,7 +15,7 @@ describe('arrayContaining', () => {
 });
 
 it('Board starts with no winner', () => {
-	expect(board.isWinner).toBe(false);
+	expect(board.getWinner()).toBe(false);
 });
 
 it('Board starts with X playing', () => {
@@ -99,7 +99,7 @@ describe('Testing move function', () => {
     board.move(1);
     board.move(2);
     board.move(2);
-    expect(board.isX).toBe(true);
+    expect(board.getIsX()).toBe(true);
   });
 
   it('movesMade should stay as 2', () => {
@@ -162,79 +162,82 @@ describe('Testing move function', () => {
     expect(board.getTotalMoves()).toBe(4);
   });
 
+  it('Expected move to be return true on valid move', () => {
+    expect(board.move(1)).toBe(true);
+    expect(board.move(2)).toBe(true);
+    expect(board.move(3)).toBe(true);
+    expect(board.move(4)).toBe(true);
+    expect(board.move(5)).toBe(true);
+  });
+
+  it('Expected move to be return false on invalid move', () => {
+    expect(board.move(1)).toBe(true);
+    expect(board.move(2)).toBe(true);
+    expect(board.move(2)).toBe(false);
+    expect(board.move(4)).toBe(true);
+    expect(board.move(1)).toBe(false);
+  });
+
 });
 
 describe('checkWin', () => {
- it('Only winning rows return winner', () => {
-  const expected = board.checkWin();
-  expect(expected).toBe(false);
+  it('Only winning rows return winner', () => {
+    board.checkWin();
+    expect(board.getWinner()).toBe(false);
   }); 
 
-it('checkWin should return true if any row is full', () => {
+  it('checkWin should set isWinner to true if any row is full', () => {
     
     board.move(1);
     board.move(4);
     board.move(2);
     board.move(8);
     board.move(3);
-    
-    expect(board.checkWin()).toBe(true);
-});
-
-it('checkWin should not return true if there is not a winner', () => {
-    
-    board.move(1);
-    board.move(3);
-    board.move(8);
-    
-    expect(board.checkWin()).toBe(false);
-});
-
-it('checkWin should return true if diagonal is full', () => {
-    
-    board.move(1);
-    board.move(4);
-    board.move(5);
-    board.move(8);
-    board.move(9);
-    
-    expect(board.checkWin()).toBe(true);
-});
-
-it('checkWin should return true if any column is full', () => {
-    
-    board.move(1);
-    board.move(2);
-    board.move(4);
-    board.move(8);
-    board.move(7);
-    
-    expect(board.checkWin()).toBe(true);
-});
-
-it('checkWin should return isWinner as true', () => {
-    
-    board.move(1);
-    board.move(2);
-    board.move(4);
-    board.move(8);
-    board.move(7);
-    board.checkWin();
-    
+    board.checkWin()
     expect(board.getWinner()).toBe(true);
-});
+  });
 
-});
-it('itsADraw should return a draw if nine moves are made', () => {
+  it('checkWin should not set isWinner to true if there is not a winner', () => {
+    
     board.move(1);
-    board.move(5);
-    board.move(2);
     board.move(3);
-    board.move(6);
+    board.move(8);
+    board.checkWin()
+    expect(board.getWinner()).toBe(false);
+  });
+
+  it('checkWin should set isWinner to true if diagonal is full', () => {
+    
+    board.move(1);
     board.move(4);
-    board.move(7);
+    board.move(5);
     board.move(8);
     board.move(9);
+    board.checkWin()
+    expect(board.getWinner()).toBe(true);
+  });
+
+  it('checkWin should set isWinner to true if any column is full', () => {
+    board.move(1);
+    board.move(2);
+    board.move(4);
+    board.move(8);
+    board.move(7);
+    board.checkWin()
+    expect(board.getWinner()).toBe(true);
+  });
+});
+
+it('itsADraw should return a draw if nine moves are made', () => {
+  board.move(1);
+  board.move(5);
+  board.move(2);
+  board.move(3);
+  board.move(6);
+  board.move(4);
+  board.move(7);
+  board.move(8);
+  board.move(9);
 
   expect(board.itsADraw()).toBe(true);
 });
@@ -280,4 +283,52 @@ describe('Checking printBoard', () => {
     expect(board.printBoard()).toContain(expected);
   });
 
+});
+
+describe('Testing setBoard function', () => {
+  it('Expect setBoard to return false if an array is not passed in', () => {
+    expect(board.setBoard(1)).toBe(false);
+  });
+
+  it('Expect setBoard to return false if an array is not contain 9 items', () => {
+    expect(board.setBoard(["","",""])).toBe(false);
+    expect(board.setBoard(["","","","","","","","","",""])).toBe(false);
+  });
+
+  it('Expect setBoard to return false if an array contains invalid characters', () => {
+    expect(board.setBoard(["","","2","","!","","&&","s","ss"])).toBe(false);
+  });
+
+  it('Expect setBoard to return true if the array is valid and update board', () => {
+    const newBoard = ["", "X", "", "X", "", "", "O", "O", ""];
+    expect(board.setBoard(newBoard)).toBe(true);
+    expect(board.getBoard()).toBe(newBoard);
+  });
+});
+
+describe('Testing validateMove function', () => {
+  it('Expect validateMove to return true if a move is valid', () => {
+    board.setBoard(["", "X", "", "X", "", "", "O", "O", ""]);
+    expect(board.validateMove(1)).toBe(true);
+    expect(board.validateMove(3)).toBe(true);
+    expect(board.validateMove(5)).toBe(true);
+    expect(board.validateMove(6)).toBe(true);
+    expect(board.validateMove(9)).toBe(true);
+  });
+
+  it('Expect validateMove to return false if a move the spot is occupied', () => {
+    board.setBoard(["", "X", "", "X", "", "", "O", "O", ""]);
+    expect(board.validateMove(2)).toBe(false);
+    expect(board.validateMove(4)).toBe(false);
+    expect(board.validateMove(7)).toBe(false);
+    expect(board.validateMove(8)).toBe(false);
+  });
+
+  it('Expect validateMove to return false if the game has been won', () => {
+    board.setBoard(["X", "X", "X", "", "", "", "O", "O", ""]);
+    board.checkWin();
+    expect(board.validateMove(4)).toBe(false);
+    expect(board.validateMove(5)).toBe(false);
+    expect(board.validateMove(6)).toBe(false);
+  });
 });
