@@ -96,6 +96,14 @@ describe("GET move", () => {
 		expect(response.body).toHaveProperty("message");
 		expect(response.body).toHaveProperty("updatedSquare");
 	});
+	it("should return multiple properties in a object", async () => {
+		const response1 = await request(app).get("/api/move/1");
+		expect(response1.body).toHaveProperty("message");
+		expect(response1.body).toHaveProperty("updatedSquare");
+		const response2 = await request(app).get("/api/move/2");
+		expect(response2.body).toHaveProperty("message");
+		expect(response2.body).toHaveProperty("updatedSquare");
+	});
 });
 
 describe("GET gameState", () => {
