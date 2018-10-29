@@ -2,6 +2,13 @@
 const request = require("supertest");
 const app = require("../app");
 
+describe("GET invalid route", () => {
+	it("should return error in a object", async () => {
+		const response = await request(app).get("/test");
+		expect(response.body).toHaveProperty("error");
+	});
+});
+
 describe("GET initializeGame", () => {
 	it("should return a 200 OK status code", async () => {
 		const response = await request(app).get("/api/initializeGame");
@@ -86,6 +93,11 @@ describe("GET move", () => {
 	});
 	it("should return multiple properties in a object", async () => {
 		const response = await request(app).get("/api/move/1");
+		expect(response.body).toHaveProperty("message");
+		expect(response.body).toHaveProperty("updatedSquare");
+	});
+	it("should return multiple properties in a object on invalid move", async () => {
+		const response = await request(app).get("/api/move/100");
 		expect(response.body).toHaveProperty("message");
 		expect(response.body).toHaveProperty("updatedSquare");
 	});

@@ -12,6 +12,8 @@ app.use(session({secret: "Secret TicTacToe techniques"}));
 app.use(express.static(path.join(__dirname, "../", "dist")));
 app.use("/api", api);
 
+
+
 app.get("*", (request, response) => {
 	response.send({error: "Route not defined"});
 });
