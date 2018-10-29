@@ -32,4 +32,28 @@
     ```sh
     $ git checkout -- package-lock.json
     ```
-5. You can now start working
+5. Build the files
+    ```sh
+    $ npm run build
+    ```
+
+6. You can now run the program
+    ```sh
+    $ npm start
+    ```
+
+7. You can now start to make changes
+    Remember to build the files regularly
+    ```sh
+    $ npm run build
+    ```
+
+    Usuful commands:
+        Run tests when files are changed
+        ```sh
+        $ npm run watch
+        ```
+        Restart app when files are changed
+        ```sh
+        $ npm run dev
+        ```
