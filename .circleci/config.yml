@@ -36,4 +36,32 @@ jobs:
       # run tests!
       - run: yarn test
 
+      - run:
+          name: Creating pdfs
+          command: "node ./docs/pdfConvert.js"
+      - store_artifacts:
+          path: docs/PDF/
 
+      - run:
+          name: Running code coverage
+          command: "npm run coverage"
+
+  deploy:
+    docker:
+      - image: buildpack-deps:trusty
+    steps:
+      - checkout
+      - run:
+          name: Deploy Master to Heroku
+          # -f: forcing, need to find a better solution
+          command: |
+            git push -f https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build

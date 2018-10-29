@@ -1,67 +1,97 @@
 //api.js
 const express = require("express");
 const router = express.Router();
-const board = require("../logic/board")
+const tictactoe = require("../logic/board");
 
 router.get("/initializeGame", (request, response) => {
-	board.initializeGame();
+	if(!request.session.instance) {
+		request.session.instance = new tictactoe.tictactoe();
+	}
+	tictactoe.initializeGame(request.session.instance);
 	response.status(200).send({message: "New Game Started"});
 });
 
 router.get("/getBoard", (request, response) => {
-	response.status(200).send({board: board.getBoard()});
+	if(!request.session.instance) {
+		request.session.instance = new tictactoe.tictactoe();
+	}
+	response.status(200).send({board: tictactoe.getBoard(request.session.instance)});
 });
 
 router.get("/getTotalMoves", (request, response) => {
-	response.status(200).send({totalMoves: board.getTotalMoves()});
+	if(!request.session.instance) {
+		request.session.instance = new tictactoe.tictactoe();
+	}
+	response.status(200).send({totalMoves:tictactoe.getTotalMoves(request.session.instance)});
 });
 
 router.get("/getWinner", (request, response) => {
-	response.status(200).send({winner: board.getWinner()});
+	if(!request.session.instance) {
+		request.session.instance = new tictactoe.tictactoe();
+	}
+	response.status(200).send({winner: tictactoe.getWinner(request.session.instance)});
 });
 
 router.get("/getIsX", (request, response) => {
-	response.status(200).send({isX: board.getIsX()});
+	if(!request.session.instance) {
+		request.session.instance = new tictactoe.tictactoe();
+	}
+	response.status(200).send({isX: tictactoe.getIsX(request.session.instance)});
 });
 
 router.get("/itsADraw", (request, response) => {
-	response.status(200).send({draw: board.itsADraw()});
+	if(!request.session.instance) {
+		request.session.instance = new tictactoe.tictactoe();
+	}
+	response.status(200).send({draw: tictactoe.itsADraw(request.session.instance)});
 });
 
 router.get("/printBoard", (request, response) => {
-	response.status(200).send({boardPrinted: board.printBoard()});
+	if(!request.session.instance) {
+		request.session.instance = new tictactoe.tictactoe();
+	}
+	response.status(200).send({boardPrinted: tictactoe.printBoard(request.session.instance)});
 });
 
 router.get("/move/:square", (request, response) => {
-	let player = board.getIsX;
+	if(!request.session.instance) {
+		request.session.instance = new tictactoe.tictactoe();
+	}
+	let player = tictactoe.getIsX(request.session.instance);
 	let message;
-	if (board.move(request.params.square)) {
+	let updatedSquare = "";
+	if (tictactoe.move(request.session.instance, request.params.square)) {
 		if (player) {
 			message = "X marked square " + request.params.square;
+			updatedSquare = "X";
 		} else {
 			message = "O marked square " + request.params.square;
+			updatedSquare = "O";
 		}
 	} else {
 		message = "Invalid Move";
 	}
-	response.status(200).send({message: message});
+	response.status(200).send({message: message, updatedSquare: updatedSquare});
 });
 
 router.get("/gameState", (request, response) => {
+	if(!request.session.instance) {
+		request.session.instance = new tictactoe.tictactoe();
+	}
 	let state, currentPlayer = "O";
 
-	if (board.getIsX()) {
+	if (tictactoe.getIsX(request.session.instance)) {
 		currentPlayer = "X";
 	}
 
-	if (board.getWinner()) {
+	if (tictactoe.getWinner(request.session.instance)) {
 		if (currentPlayer === "X") {
 			currentPlayer = "O";
 		} else {
 			currentPlayer = "X";
 		}
 		state = currentPlayer + " Won";
-	} else if (board.itsADraw()) {
+	} else if (tictactoe.itsADraw(request.session.instance)) {
 		if (currentPlayer === "X") {
 			currentPlayer = "O";
 		} else {
@@ -73,9 +103,9 @@ router.get("/gameState", (request, response) => {
 	}
 
 	const gameState = {
-		board: board.getBoard(),
-		boardPrinted: board.printBoard(),
-		totalMoves: board.getTotalMoves(),
+		board: tictactoe.getBoard(request.session.instance),
+		boardPrinted: tictactoe.printBoard(request.session.instance),
+		totalMoves: tictactoe.getTotalMoves(request.session.instance),
 		currentPlayer: currentPlayer,
 		state: state
 	};

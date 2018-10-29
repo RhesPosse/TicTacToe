@@ -1,108 +1,109 @@
 //board.js
 
-let board = ["", "", "", "", "", "", "", "", ""];
-let isWinner = false;
-let isX = true;
-let movesMade = 0;
-
-
-function initializeGame() {
-	board = ["", "", "", "", "", "", "", "", ""];
-	isWinner = false;
-	isX = true;
-	movesMade = 0;
+class tictactoe {
+	constructor() {
+		this.board = ["", "", "", "", "", "", "", "", ""];
+		this.isWinner = false;
+		this.isX = true;
+		this.movesMade = 0;
+	};
 };
 
+function initializeGame(gameState) {
+	gameState.board = ["", "", "", "", "", "", "", "", ""];
+	gameState.isWinner = false;
+	gameState.isX = true;
+	gameState.movesMade = 0;
+};
 
-function move(move) {
-	if(validateMove(move)) {
-		if(isX) {
-			board[move-1] = "X";
-			isX = false;
+function move(gameState, move) {
+	if(validateMove(gameState, move)) {
+		if(gameState.isX) {
+			gameState.board[move-1] = "X";
+			gameState.isX = false;
 		}
 		else {
-			board[move-1] = "O";
-			isX = true;
+			gameState.board[move-1] = "O";
+			gameState.isX = true;
 		}
-		movesMade += 1;
-		checkWin();
+		gameState.movesMade += 1;
+		checkWin(gameState);
 		return true;
 	}
 	return false;
-}
+};
 
-function validateMove(move) {
-	if(board[move-1] === "" && !isWinner) {
+function validateMove(gameState, move) {
+	if(gameState.board[move-1] === "" && !gameState.isWinner) {
 		return true;
 	}
 	return false;
-}
+};
 
-function getBoard(){
-	return board;
-}
+function getBoard(gameState){
+	return gameState.board;
+};
 
-function getTotalMoves(){
-	return movesMade;
-}
+function getTotalMoves(gameState){
+	return gameState.movesMade;
+};
 
-function getWinner(){
-	return isWinner;
-}
+function getWinner(gameState){
+	return gameState.isWinner;
+};
 
-function getIsX() {
-	return isX;
-}
+function getIsX(gameState) {
+	return gameState.isX;
+};
 
-function itsADraw(){
-	if(movesMade === 9 && !checkWin()){
+function itsADraw(gameState){
+	if(gameState.movesMade === 9 && !checkWin(gameState)){
 		return true;
 	}
 	return false;
-}
+};
 
- function checkWin() {
+function checkWin(gameState) {
 	if(
-		(board[0] !== "" && (board[0] === board[1] && board[1] === board[2])) || //rows
-		(board[3] !== "" && (board[3] === board[4] && board[4] === board[5])) ||
-		(board[6] !== "" && (board[6] === board[7] && board[7] === board[8])) ||
-		(board[0] !== "" && (board[0] === board[4] && board[4] === board[8])) ||//diagonal
-		(board[2] !== "" && (board[2] === board[4] && board[4] === board[6])) ||
-		(board[0] !== "" && (board[0] === board[3] && board[3] === board[6])) ||//columns
-		(board[1] !== "" && (board[1] === board[4] && board[4] === board[7])) ||
-		(board[2] !== "" && (board[2] === board[5] && board[5] === board[8])) 
+		(gameState.board[0] !== "" && (gameState.board[0] === gameState.board[1] && gameState.board[1] === gameState.board[2])) || //rows
+		(gameState.board[3] !== "" && (gameState.board[3] === gameState.board[4] && gameState.board[4] === gameState.board[5])) ||
+		(gameState.board[6] !== "" && (gameState.board[6] === gameState.board[7] && gameState.board[7] === gameState.board[8])) ||
+		(gameState.board[0] !== "" && (gameState.board[0] === gameState.board[4] && gameState.board[4] === gameState.board[8])) ||//diagonal
+		(gameState.board[2] !== "" && (gameState.board[2] === gameState.board[4] && gameState.board[4] === gameState.board[6])) ||
+		(gameState.board[0] !== "" && (gameState.board[0] === gameState.board[3] && gameState.board[3] === gameState.board[6])) ||//columns
+		(gameState.board[1] !== "" && (gameState.board[1] === gameState.board[4] && gameState.board[4] === gameState.board[7])) ||
+		(gameState.board[2] !== "" && (gameState.board[2] === gameState.board[5] && gameState.board[5] === gameState.board[8])) 
 	) {
-		isWinner = true;
+		gameState.isWinner = true;
 	}
 };
 
-// print board
-function printBoard() {
+function printBoard(gameState) {
 	let boardToPrint = "";
 
 	for(let i = 0; i < 9; i++) {
 		if(i === 0 || i === 3 || i === 6) {
-			if(board[i] === "") {
+			if(gameState.board[i] === "") {
 				boardToPrint += "   |";
 			}
 			else {
-				boardToPrint += " " + board[i] + " |";
+				boardToPrint += " " + gameState.board[i] + " |";
 			}
 		}
 		else if(i === 1 || i === 4 || i === 7) {
-			if(board[i] === "") {
+			if(gameState.board[i] === "") {
 				boardToPrint += "   | ";
 			}
 			else {
-				boardToPrint += " " + board[i] + " | ";
+				boardToPrint += " " + gameState.board[i] + " | ";
 			}
 		}
 		else {
-			if(board[i] === "") {
+			if(gameState.board[i] === "") {
 				boardToPrint += "  ";
 			}
 			else {
-				boardToPrint += board[i];
+				boardToPrint += gameState.board[i];
 			}
 
 			if(i !== 8) {
@@ -113,7 +114,7 @@ function printBoard() {
 	return boardToPrint;
 };
 
-function setBoard(newBoard) {
+function setBoard(gameState, newBoard) {
 	if (newBoard.constructor === Array) {
 		if (newBoard.length === 9) {
 			for(let i = 0; i < 9; ++i) {
@@ -121,26 +122,24 @@ function setBoard(newBoard) {
 					return false;
 				}
 			}
-			board = newBoard;
+			gameState.board = newBoard;
 			return true;
 		}
 	}
 	return false;
-}
+};
 
 module.exports = {
-	getIsX,
-	printBoard,
+	tictactoe, 
+	initializeGame,
+	move,
+	validateMove,
 	getBoard,
 	getTotalMoves,
-	move,
-	checkWin,
-	initializeGame,
 	getWinner,
+	getIsX,
 	itsADraw,
-	setBoard,
-	validateMove
-}; 
-
-
-
+	checkWin,
+	printBoard,
+	setBoard
+};
