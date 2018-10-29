@@ -1,29 +1,32 @@
 //board.test.js
-const board = require("./board");
+const tictactoe = require("./board");
+
+let board = new tictactoe();
 
 afterEach(() => {
   board.initializeGame();
 });
 
 
+
 describe('arrayContaining', () => {
   
  it('Board can only be 9 squares', () => {
     expect(board.getBoard()).toHaveLength(9);
-  });	
+  }); 
 
 });
 
 it('Board starts with no winner', () => {
-	expect(board.getWinner()).toBe(false);
+  expect(board.getWinner()).toBe(false);
 });
 
 it('Board starts with X playing', () => {
-	expect(board.getIsX()).toBe(true);
+  expect(board.getIsX()).toBe(true);
 });
 
 it('Starts with zero moves made', () => {
-	expect(board.getTotalMoves()).toBe(0);
+  expect(board.getTotalMoves()).toBe(0);
 });
 
 describe('Testing move function', () => {
