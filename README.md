@@ -1,7 +1,7 @@
 # [TicTacToe](https://tictactoe-heroku23.herokuapp.com/) 
 [![CircleCI](https://circleci.com/gh/RhesPosse/TicTacToe.svg?style=svg)](https://circleci.com/gh/RhesPosse/TicTacToe) 
 [![Coverage Status](https://coveralls.io/repos/github/RhesPosse/TicTacToe/badge.svg?branch=master)](https://coveralls.io/github/RhesPosse/TicTacToe?branch=master) 
-[![MIT License][license-badge]][license]
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Hugbúnaðarfræði - T-303-HUGB
 Háskólinn í Reykjavík
