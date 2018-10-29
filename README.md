@@ -14,4 +14,4 @@ Nemendur:
 * Thomas Ari Bech
 * Voisava Gkouli
 
-This project is about implementing the game Tic Tac Toe in Javascript.
+This project is about implementing the game TicTacToe in Javascript using TDD.
