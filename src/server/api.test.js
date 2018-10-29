@@ -14,6 +14,9 @@ describe("GET initializeGame", () => {
 });
 
 describe("GET getBoard", () => {
+	beforeEach(async () => {
+		const init = await request(app).get("/api/initializeGame");
+	});
 	it("should return a 200 OK status code", async () => {
 		const response = await request(app).get("/api/getBoard");
 		expect(response.status).toBe(200);  
