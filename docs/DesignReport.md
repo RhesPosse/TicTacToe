@@ -25,4 +25,4 @@ The design is based on the basic and simple logic of the Tic tac toe game. From 
 
 As in all games we have the standard sequence of steps carried out during the process repeatedly. In the Tic tac toe game based on the game logic and limits where we should meet the conditions of having a square board 3x3 and only two players (X and O), the overall program structure will be:
 
-![picture](images/structure.png)
+![picture](images/structure.PNG)
