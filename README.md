@@ -1,4 +1,7 @@
-# TicTacToe [![CircleCI](https://circleci.com/gh/RhesPosse/TicTacToe.svg?style=svg)](https://circleci.com/gh/RhesPosse/TicTacToe)[![Coverage Status](https://coveralls.io/repos/github/RhesPosse/TicTacToe/badge.svg?branch=master)](https://coveralls.io/github/RhesPosse/TicTacToe?branch=master)
+# [TicTacToe](https://tictactoe-heroku23.herokuapp.com/) 
+[![CircleCI](https://circleci.com/gh/RhesPosse/TicTacToe.svg?style=svg)](https://circleci.com/gh/RhesPosse/TicTacToe) 
+[![Coverage Status](https://coveralls.io/repos/github/RhesPosse/TicTacToe/badge.svg?branch=master)](https://coveralls.io/github/RhesPosse/TicTacToe?branch=master) 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Hugbúnaðarfræði - T-303-HUGB
 Háskólinn í Reykjavík
@@ -14,4 +17,4 @@ Nemendur:
 * Thomas Ari Bech
 * Voisava Gkouli
 
-This project is about implementing the game Tic Tac Toe in Javascript.
+This project is about implementing the game TicTacToe in Javascript using TDD.
