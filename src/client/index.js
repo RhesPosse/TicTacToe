@@ -1,30 +1,31 @@
 let $ = require("jquery");
 
-fetch("./api/initializeGame").then((response) => {
-	response.json().then((data) => { 
-		console.log(data.message);
-	});
-}).catch((err) => {
-	console.log("oof");
-});
+let $squares = $("td");
+let $message = $("#message");
 
-$("td").each(function() {
+$squares.each(function() {
 	$(this).on("click", function() {
 		move($(this));
 	});
 });
 
+$("#reset").on("click", function () {
+	$(this).on("click", function() {
+		newGame();
+	});
+});
+
+updatePage();
+
 function move(element) {
 	fetch("./api/move/" + element.attr("id")).then((response) => {
 		response.json().then((data) => { 
 			console.log(data.message);
-			if (data.updatedSquare !== "") {
-				element.text(data.updatedSquare);
-			}
 			checkGameOver();
+			updatePage();
 		});
 	}).catch((err) => {
-		console.log("oof");
+		console.log(err);
 	});
 }
 
@@ -36,6 +37,34 @@ function checkGameOver() {
 			}
 		});
 	}).catch((err) => {
-		console.log("oof");
+		console.log(err);
 	});
 }
+
+function newGame() {
+	fetch("./api/initializeGame").then((response) => {
+		response.json().then((data) => { 
+			console.log(data.message);
+			updatePage();
+		});
+	}).catch((err) => {
+		console.log(err);
+	});
+};
+
+function updatePage() {
+	fetch("./api/gameState").then((response) => {
+		response.json().then((data) => { 
+			$squares.each(function() {
+				$(this).text(data.board[$(this).attr("id") - 1]);
+			});
+			if (data.state === "Unfinished") {
+				$message.text(data.currentPlayer + " it‘s your turn!");
+			} else {
+				$message.text(data.state);
+			}
+		});
+	}).catch((err) => {
+		console.log(err);
+	});
+};
