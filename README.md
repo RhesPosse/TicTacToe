@@ -1,4 +1,4 @@
-# TicTacToe [![CircleCI](https://circleci.com/gh/RhesPosse/TicTacToe.svg?style=svg)](https://circleci.com/gh/RhesPosse/TicTacToe)[![Coverage Status](https://coveralls.io/repos/github/RhesPosse/TicTacToe/badge.svg?branch=master)](https://coveralls.io/github/RhesPosse/TicTacToe?branch=master)
+# [TicTacToe](https://tictactoe-heroku23.herokuapp.com/) [![CircleCI](https://circleci.com/gh/RhesPosse/TicTacToe.svg?style=svg)](https://circleci.com/gh/RhesPosse/TicTacToe)[![Coverage Status](https://coveralls.io/repos/github/RhesPosse/TicTacToe/badge.svg?branch=master)](https://coveralls.io/github/RhesPosse/TicTacToe?branch=master)
 
 ## Hugbúnaðarfræði - T-303-HUGB
 Háskólinn í Reykjavík
