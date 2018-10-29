@@ -286,6 +286,13 @@ describe('Checking printBoard', () => {
     expect(tictactoe.printBoard(state)).toContain(expected);
   });
 
+  it('Expect board to also contain X and 0', () => {
+    tictactoe.move(state, 1);
+    tictactoe.move(state, 8);
+    expect(tictactoe.printBoard(state)).toContain(["X"]);
+    expect(tictactoe.printBoard(state)).toContain(["O"]);
+  });
+
 });
 
 describe('Testing setBoard function', () => {
