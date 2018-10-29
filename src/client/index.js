@@ -10,9 +10,7 @@ $squares.each(function() {
 });
 
 $("#reset").on("click", function () {
-	$(this).on("click", function() {
-		newGame();
-	});
+	newGame();
 });
 
 updatePage();
