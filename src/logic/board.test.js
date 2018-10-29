@@ -287,8 +287,14 @@ describe('Checking printBoard', () => {
   });
 
   it('Expect board to also contain X and 0', () => {
-    tictactoe.move(state, 1);
+    tictactoe.move(state, 7);
+    tictactoe.move(state, 9);
     tictactoe.move(state, 8);
+    tictactoe.move(state, 1);
+    tictactoe.move(state, 2);
+    tictactoe.move(state, 3);
+    tictactoe.move(state, 5);
+    tictactoe.move(state, 6);
     expect(tictactoe.printBoard(state)).toContain(["X"]);
     expect(tictactoe.printBoard(state)).toContain(["O"]);
   });
