@@ -32,8 +32,10 @@ To run the app on an external server you will need to use Circle CI and Heroku
 1. Sign up on [Heroku](https://signup.heroku.com/)
 2. Setup the [Heroku Toolbelt](https://devcenter.heroku.com/articles/heroku-cli)
 3. Go to Git Bash and sign in into Heroku by typing `heroku login`
-4. Create a new Heroku app by typing `git remote add heroku git@heroku.com:TicTacToe-heroku.git`
-5. Go to [Heroku.com](https://dashboard.heroku.com/apps) to see the web address of the app
+4. Create a new Heroku app by typing `heroku create`
+5. Type `git remote -v` to verify that a remote has been set up for your app
+6. Deploy the code by typing `git push heroku master`
+7. Go to [Heroku.com](https://dashboard.heroku.com/apps) to see the web address of the app or enter `heroku open` in Git Bash
 
 Note that the app is live on https://tictactoe-heroku23.herokuapp.com/
 
