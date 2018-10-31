@@ -18,7 +18,7 @@ describe('arrayContaining', () => {
 });
 
 it('Board starts with no winner', () => {
-  expect(tictactoe.getWinner(state)).toBe(true);
+  expect(tictactoe.getWinner(state)).toBe(false);
 });
 
 it('Board starts with X playing', () => {
